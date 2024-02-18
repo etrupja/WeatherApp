@@ -9,8 +9,16 @@
     <div class="row">
         <div class="col-md-6 offset-3">
             <div class="input-group">
-                <input type="text" placeholder="Search for a city..." class="form-control" id="weatherCity">
-                <button class="btn btn-outline-secondary" @onclick="CheckWeatherAsync">Check weather</button>
+                <input type="text" 
+                    placeholder="Search for a city..." 
+                    class="form-control" 
+                    id="weatherCity"
+                    @bind="weatherCity"
+                >
+                <button 
+                    class="btn btn-outline-secondary" 
+                    @onclick="() => CheckWeatherAsync(weatherCity)"
+                >Check weather</button>
                 <button class="btn btn-outline-secondary">Favorite</button>
             </div>
 
@@ -33,6 +41,7 @@
 
 
 @code {
+    private string weatherCity = "";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -45,8 +54,8 @@
         }
     }
 
-    protected async Task CheckWeatherAsync()
+    protected async Task CheckWeatherAsync(string cityName)
     {
-        await JSRuntime.InvokeVoidAsync("checkWeather");
+        await JSRuntime.InvokeVoidAsync("checkWeather", cityName);
     }
 }

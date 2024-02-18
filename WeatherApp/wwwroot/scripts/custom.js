@@ -1,4 +1,3 @@
-﻿window.checkWeather = () => {
-    let weatherCityName = document.getElementById("weatherCity").value;
-    alert(weatherCityName)
+﻿window.checkWeather = (cityName) => {
+    alert(cityName)
 }
