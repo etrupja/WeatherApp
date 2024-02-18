@@ -25,17 +25,27 @@
 
             <hr />
 
-            <div class="card text-center">
-                <div class="card-header" id="weather_city">
-                    -
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title" id="weather_icon"></h5>
-                    <p class="card-text" id="weather_forecast"></p>
-                    <p class="card-text" id="weather_temperature"></p>
+            @if (weatherResponse != null && weatherResponse.Sys != null)
+            {
+                <div class="card text-center">
+                    <div class="card-header" id="weather_city">
+                        @weatherResponse.Name, @weatherResponse.Sys.Country
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="weather_icon">
+                            <img width="50px"
+                                 src="http://openweathermap.org/img/wn/@weatherResponse.Weather[0].Icon@@4x.png" />
+                        </h5>
+                        <p class="card-text" id="weather_forecast">
+                            @weatherResponse.Weather[0].Main
+                        </p>
+                        <p class="card-text" id="weather_temperature">
+                            @weatherResponse.Main.Temp &#176
+                        </p>
 
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -59,5 +69,6 @@
     protected async Task CheckWeatherAsync(string cityName)
     {
         weatherResponse = await JSRuntime.InvokeAsync<WeatherResponse>("checkWeather", cityName);
+
     }
 }
