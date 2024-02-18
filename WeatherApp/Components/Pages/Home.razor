@@ -1,5 +1,5 @@
 ﻿@page "/"
-
+@rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Home</PageTitle>
@@ -32,6 +32,14 @@
 </div>
 
 
-@{
-    //Write the C# code...
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // await JSRuntime.InvokeVoidAsync("alert", "Welcome to this course!");
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "welcomeTxt", "Welcome to this course!");
+        }
+    }
 }
