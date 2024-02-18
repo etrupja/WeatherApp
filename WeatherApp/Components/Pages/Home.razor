@@ -10,7 +10,7 @@
         <div class="col-md-6 offset-3">
             <div class="input-group">
                 <input type="text" placeholder="Search for a city..." class="form-control" id="weatherCity">
-                <button class="btn btn-outline-secondary">Check weather</button>
+                <button class="btn btn-outline-secondary" @onclick="CheckWeatherAsync">Check weather</button>
                 <button class="btn btn-outline-secondary">Favorite</button>
             </div>
 
@@ -39,7 +39,14 @@
         if (firstRender)
         {
             // await JSRuntime.InvokeVoidAsync("alert", "Welcome to this course!");
-            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "welcomeTxt", "Welcome to this course!");
+            // await JSRuntime.InvokeVoidAsync("localStorage.setItem", "welcomeTxt", "Welcome to this course!");
+
+            await JSRuntime.InvokeVoidAsync("import", "/scripts/custom.js");
         }
+    }
+
+    protected async Task CheckWeatherAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("checkWeather");
     }
 }
