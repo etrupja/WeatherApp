@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using WeatherApp.Dtos
 @rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
 
@@ -42,6 +43,7 @@
 
 @code {
     private string weatherCity = "";
+    private WeatherResponse weatherResponse = new WeatherResponse();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -56,6 +58,6 @@
 
     protected async Task CheckWeatherAsync(string cityName)
     {
-        await JSRuntime.InvokeVoidAsync("checkWeather", cityName);
+        weatherResponse = await JSRuntime.InvokeAsync<WeatherResponse>("checkWeather", cityName);
     }
 }
