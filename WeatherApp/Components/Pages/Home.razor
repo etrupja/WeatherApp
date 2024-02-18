@@ -4,6 +4,34 @@
 
 <PageTitle>Home</PageTitle>
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="input-group">
+                <input type="text" placeholder="Search for a city..." class="form-control weather__searchform-input" id="weatherCity">
+                <button class="btn btn-outline-secondary">Check weather</button>
+                <button class="btn btn-outline-secondary">Favorite</button>
+            </div>
+
+            <hr />
+
+            <div class="card text-center">
+                <div class="card-header" id="weather_city">
+                    -
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" id="weather_icon"></h5>
+                    <p class="card-text" id="weather_forecast"></p>
+                    <p class="card-text" id="weather_temperature"></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @{
     //Write the C# code...
 }

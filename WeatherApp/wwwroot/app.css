@@ -49,3 +49,13 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+.favorite-city-card {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
