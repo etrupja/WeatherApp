@@ -9,7 +9,7 @@
                     console.error(`HTTP error: ${res.status}`);
                 }
 
-                DotNet.invokeMethodAsync('WeatherApp', 'ShowFavoriteButton')
+                DotNet.invokeMethodAsync('WeatherApp', 'ShowFavoriteButton', cityName)
 
                 return res.json();
             })

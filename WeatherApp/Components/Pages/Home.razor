@@ -23,7 +23,7 @@
 
                 @if (isShowFavorite)
                 {
-                    <button class="btn btn-outline-secondary">Favorite</button>
+                    <button class="btn btn-outline-secondary">Favorite @CityName</button>
                 }
             </div>
 
@@ -58,6 +58,8 @@
 @code {
     private string weatherCity = "";
     private static Boolean isShowFavorite = false;
+    private static string CityName = "";
+
     private WeatherResponse weatherResponse = new WeatherResponse();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -78,8 +80,9 @@
     }
 
     [JSInvokable]
-    public static async Task ShowFavoriteButton()
+    public static async Task ShowFavoriteButton(string cityName)
     {
+        CityName = cityName;
         isShowFavorite = true;
     }
 }
