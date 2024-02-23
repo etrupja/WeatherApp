@@ -20,7 +20,11 @@
                     class="btn btn-outline-secondary" 
                     @onclick="() => CheckWeatherAsync(weatherCity)"
                 >Check weather</button>
-                <button class="btn btn-outline-secondary">Favorite</button>
+
+                @if (isShowFavorite)
+                {
+                    <button class="btn btn-outline-secondary">Favorite</button>
+                }
             </div>
 
             <hr />
@@ -53,6 +57,7 @@
 
 @code {
     private string weatherCity = "";
+    private static Boolean isShowFavorite = false;
     private WeatherResponse weatherResponse = new WeatherResponse();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -70,5 +75,10 @@
     {
         weatherResponse = await JSRuntime.InvokeAsync<WeatherResponse>("checkWeather", cityName);
 
+    }
+
+    public static async Task ShowFavoriteButton()
+    {
+        isShowFavorite = true;
     }
 }
