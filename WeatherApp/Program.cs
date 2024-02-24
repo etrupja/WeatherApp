@@ -1,3 +1,4 @@
+using Serilog;
 using WeatherApp.Components;
 using WeatherApp.Helpers;
 
@@ -9,6 +10,14 @@ builder.Services.AddRazorComponents()
 
 //Add global exception handler
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+//Add logging configuration
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("Logs/mylogs.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 

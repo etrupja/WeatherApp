@@ -4,6 +4,7 @@
 @using WeatherApp.Models
 @rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
+@inject ILogger<Home> Logger
 
 <PageTitle>Home</PageTitle>
 
@@ -75,6 +76,17 @@
             await JSRuntime.InvokeVoidAsync("jsHelper.setDotNetHelper", dotnetHelper);
 
             await JSRuntime.InvokeVoidAsync("import", "/scripts/custom.js");
+
+            Logger.LogInformation("custom.js was imporated");
+        }
+
+        try
+        {
+            throw new Exception("This is a custom exception message");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex.Message);
         }
     }
 
