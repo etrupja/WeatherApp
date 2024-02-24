@@ -34,4 +34,9 @@ else
 
 @code {
     private List<FavoritedCity> favoritedCities = new List<FavoritedCity>(); // Default initialization
+
+    protected override async Task OnInitializedAsync()
+    {
+        throw new Exception("This is a custom exception");
+    }
 }
