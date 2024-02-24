@@ -23,4 +23,9 @@
     public void GetCityWeather(int cityId)
     {
     }
+
+    protected override Task OnInitializedAsync()
+    {
+        throw new Exception($"Exception in child component. City Id = {City.Id}");
+    }
 }
