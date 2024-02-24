@@ -1,5 +1,6 @@
 ﻿@page "/favorites"
 @using WeatherApp.Models
+@using WeatherApp.Components.Pages.Child;
 
 <PageTitle>Favorites</PageTitle>
 
@@ -13,21 +14,7 @@ else
     <div class="row">
         @foreach (var city in favoritedCities)
         {
-            <div class="col-md-6 favorite-city-card">
-                <div class="card text-center">
-                    <div class="card-header">
-                        @city.CityName
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">-</h5>
-                        <p class="card-text">-</p>
-                        <a onclick="() => GetCityWeather(@city.Id)" class="btn btn-primary">Get weather</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        -
-                    </div>
-                </div>
-            </div>
+            <FavoriteCity City="@city"></FavoriteCity>
         }
     </div>
 }

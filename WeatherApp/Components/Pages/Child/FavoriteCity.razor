@@ -1,0 +1,26 @@
+﻿@using WeatherApp.Models
+
+
+<div class="col-md-6 favorite-city-card" id="card-@(City.Id)">
+    <div class="card text-center">
+        <div class="card-header">
+            @City.CityName
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">-</h5>
+            <a @onclick="() => GetCityWeather(City.Id)" id="button-@(City.Id)" class="btn btn-primary">Get weather</a>
+        </div>
+        <div class="card-footer text-muted">
+            -
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public FavoritedCity City { get; set; }
+
+    public void GetCityWeather(int cityId)
+    {
+    }
+}
